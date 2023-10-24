@@ -54,6 +54,17 @@ app.put('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
     }
 });
 
+app.put('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!user) throw new Error('User not found');
+        res.json({ success: true });
+    }
+    catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 
 app.delete('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
     try {
