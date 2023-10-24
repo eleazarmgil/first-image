@@ -7,6 +7,9 @@ app.use(express.json());
 
 connectDB();
 
+app.get('/status', (req, res) => {
+    res.send('pong');
+});
 
 
 app.get('/users', async (req, res) => {
@@ -50,6 +53,25 @@ app.put('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
         res.json({ success: true });
     }
     catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
+app.patch('/users/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) throw new Error('User not found');
+
+      
+        if (req.body.nombre) user.nombre = req.body.nombre;
+        if (req.body.apellido) user.apellido = req.body.apellido;
+        if (req.body.edad) user.edad = req.body.edad;
+
+
+        await user.save();
+
+        res.json({ success: true });
+    } catch (error) {
         res.status(500).send(error.message);
     }
 });
