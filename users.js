@@ -10,7 +10,7 @@ const usersSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        Edad: {
+        edad: {
             type: Number,
             required: true
         }
