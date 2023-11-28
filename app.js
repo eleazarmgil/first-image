@@ -12,6 +12,7 @@ app.get('/status', (req, res) => {
 });
 
 
+
 app.get('/directories', async (req, res) => {
     try {
         const directories = await User.find();
@@ -21,6 +22,7 @@ app.get('/directories', async (req, res) => {
         res.status(500).send(error.message);
     }
 });
+
 
 app.get('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
     try {
@@ -32,6 +34,7 @@ app.get('/directories/:id', async (req, res) => {    //http://localhost:3000/dir
         res.status(500).send(error.message);
     }
 });
+
 
 
 app.post('/directories', async (req, res) => {    //http://localhost:3000/directories/1
@@ -46,6 +49,7 @@ app.post('/directories', async (req, res) => {    //http://localhost:3000/direct
     }
 });
 
+
 app.put('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
     try {
         const directory = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -56,6 +60,7 @@ app.put('/directories/:id', async (req, res) => {    //http://localhost:3000/dir
         res.status(500).send(error.message);
     }
 });
+
 
 app.patch('/directories/:id', async (req, res) => {
     try {
@@ -74,6 +79,7 @@ app.patch('/directories/:id', async (req, res) => {
         res.status(500).send(error.message);
     }
 });
+
 
 
 app.delete('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
