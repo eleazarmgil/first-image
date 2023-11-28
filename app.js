@@ -12,21 +12,21 @@ app.get('/status', (req, res) => {
 });
 
 
-app.get('/users', async (req, res) => {
+app.get('/directories', async (req, res) => {
     try {
-        const users = await User.find();
-        res.json(users);
+        const directories = await User.find();
+        res.json(directories);
     }
     catch (error) {
         res.status(500).send(error.message);
     }
 });
 
-app.get('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
+app.get('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
     try {
-        const user = await User.findById(req.params.id);
-        if (!user) throw new Error('usuario no encontrado');
-        res.json(user);
+        const directory = await User.findById(req.params.id);
+        if (!directory) throw new Error('directorio no encontrado');
+        res.json(directory);
     }
     catch (error) {
         res.status(500).send(error.message);
@@ -34,11 +34,11 @@ app.get('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
 });
 
 
-app.post('/users', async (req, res) => {    //http://localhost:3000/users/1
+app.post('/directories', async (req, res) => {    //http://localhost:3000/directories/1
     try {
-        const { nombre, apellido, edad } = req.body;
-        const user = new User({ nombre, apellido, edad });
-        await user.save();
+        const { name, email} = req.body;
+        const directory = new User({ name, email);
+        await directory.save();
         res.json({ success: true });
     }
     catch (error) {
@@ -46,10 +46,10 @@ app.post('/users', async (req, res) => {    //http://localhost:3000/users/1
     }
 });
 
-app.put('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
+app.put('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
     try {
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        if (!user) throw new Error('User not found');
+        const directory = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!directory) throw new Error('User not found');
         res.json({ success: true });
     }
     catch (error) {
@@ -57,18 +57,17 @@ app.put('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
     }
 });
 
-app.patch('/users/:id', async (req, res) => {
+app.patch('/directories/:id', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
-        if (!user) throw new Error('User not found');
+        const directory = await User.findById(req.params.id);
+        if (!directory) throw new Error('User not found');
 
       
-        if (req.body.nombre) user.nombre = req.body.nombre;
-        if (req.body.apellido) user.apellido = req.body.apellido;
-        if (req.body.edad) user.edad = req.body.edad;
+        if (req.body.name) directory.name = req.body.name;
+        if (req.body.email) directory.email = req.body.email;
 
 
-        await user.save();
+        await directory.save();
 
         res.json({ success: true });
     } catch (error) {
@@ -77,10 +76,10 @@ app.patch('/users/:id', async (req, res) => {
 });
 
 
-app.delete('/users/:id', async (req, res) => {    //http://localhost:3000/users/1
+app.delete('/directories/:id', async (req, res) => {    //http://localhost:3000/directories/1
     try {
-        const user = await User.findByIdAndDelete(req.params.id);
-        if (!user) throw new Error('User not found');
+        const directory = await User.findByIdAndDelete(req.params.id);
+        if (!directory) throw new Error('User not found');
         res.json({ success: true });
     }
     catch (error) {
