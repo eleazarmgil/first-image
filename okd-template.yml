@@ -15,23 +15,23 @@ parameters:
     required: true
   
   - name: DB_NAME
-    description: Nombre de la base de datos.
+    description: dbdirectories
     value: cnp2simple
 
   - name: DB_USR
-    description: Nombre de usario para conexión a la base de datos.
+    description: myuser
     value: cnp2simple
 
   - name: DB_PWD
-    description: Password de usuario para conexión a la base de datos.
+    description: superpassword
     required: true
 
   - name: DOMAIN_NAME
-    description: Nombre de dominio para la publicación de la ruta.
+    description: app
     required: true
 
   - name: PROJECT_NAME
-    description: Nombre de projecto
+    description: directories
     required: true
 
 labels:

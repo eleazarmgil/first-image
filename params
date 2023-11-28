@@ -1,0 +1,4 @@
+APP_NAME='cnp2simple'
+DB_PWD='mypasswd'
+DOMAIN_NAME='pjemgil-20.okd-dev.ucab.edu.ve'
+PROJECT_NAME='pj-emgil-20'
